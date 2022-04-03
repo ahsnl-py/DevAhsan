@@ -51,10 +51,10 @@ def main():
         user_text =  request.form.get('longTextInput')
 
         subject = f"From: {user_name} |Email: {user_email}"
-        if not send_mail(sender, subject, user_text):
-            new_query = UserQueryContact(user_name, user_email, user_text)
-            db.session.add(new_query)
-            db.session.commit()
+        # if not send_mail(sender, subject, user_text):
+        new_query = UserQueryContact(user_name, user_email, user_text)
+        db.session.add(new_query)
+        db.session.commit()
             
         return render_template('index.html', isRegister=is_register)
 
