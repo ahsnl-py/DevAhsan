@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DevAhsan Portfolio Website</title>
+        <script src="https://kit.fontawesome.com/eee20cb5e6.js" crossorigin="anonymous"></script>
+        
+        <!-- Update these with your own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href= "{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <header>
+            <!-- Navbar -->
+            <div class="logo">
+                <img src="{{ url_for('static',filename='images/default-monochrome.svg') }}" class="logo__img">
+            </div>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+            
+        </header>
+
+        <!-- Introduction  -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hello, I'm <strong>Ahsan</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">Software Developer</p>
+            <!-- <img src="#" alt="Ahsanulnas display picture"> -->
+            <img src='{{ url_for('static',filename='images/avatar-me-1.png') }}' alt="Avatar display picture" class="intro__img"/>
+        </section>
+
+        <!-- My Service  -->
+        <section class="my-service" id="services">
+            <h2 class="section__title section__title--services">
+                What I do
+            </h2>
+            <div class="services">
+                <div class="service">
+                    <span class="service-icon"><i class="fa-solid fa-database"></i></span>
+                    <h3>Relational database developer</h3>
+                    <p>Professional experienced at handling large datasets in relational manner. Using T-SQL to produce complex functionality to reduce latency for other connected modules in backend system</p>
+                </div>
+                
+                <div class="service">
+                    <span class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                    <h3>ETL maintaince and development</h3>
+                    <p>Transport and Transform huge transactional data as efficienctly as possible while creating additional auditing and automation process for daily transactions</p>
+                </div>
+
+                <div class="service">
+                    <span class="service-icon"><i class="fa-solid fa-laptop-code"></i></span>
+                    <h3>Web Development</h3>
+                    <p>Design and build responsive website. Aim to deploy easily for fast prototyping and a landing page for individual business usage</p>
+                </div>
+                
+            </div>
+
+
+            <a href="#contact" class="btn">Request for CV</a>
+            <!-- <a class="btn btn-stats">See Stats</a>
+
+            <div class="stats">
+                <div class="stats-close">
+                    <a href="#my-service" id="stats-close-id"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div> -->
+
+        </section>
+
+        <!-- About ME  -->
+        <section class="about-me" id="about">
+            <h2 class="section__title section__title--about"> 
+                Who I Am
+            </h2>
+            <p class="section__subtitle section__subtitle--about">
+                <!-- write here  -->
+                Software Developer Analyst base out of Prague
+            </p>
+
+            <div class="about-me__body">
+                <p>I started my journey as a python developer. You could see my early days of work with the web development, quite messy and uncessary amount of junk libraries.</p>
+                <p>My aim and passion in my career path is to keep on creating simple, elagant and user firendly digital product from front to end.</p>
+            </div>
+            
+            <!-- <img src="#" alt="Jane leaning against a bus"> -->
+            <img src='{{ url_for('static',filename='images/avatar-me-3.png') }}' alt="Ahsanulnas-DP" class="about-me__img" />
+        </section>
+
+        <!-- My Work  -->
+        <section class="my-work" id="work">
+            <h2 class="section__title">My Work</h2>
+            <p class="section__subtitle section__subtitle--work">Some of the development I have done so far</p>
+            <div class="portfolio">
+                <!-- Portfolio item 01 -->
+                <a href="https://dashf1.herokuapp.com/" class="portfolio__item">
+                    <img src="{{ url_for('static',filename='images/dashf1.png') }}" alt="dashf1" class="portfolio__img">
+
+                </a>
+                
+                <!-- Portfolio item 02 -->
+                <a href="https://praguestudentcenter.herokuapp.com/" class="portfolio__item">
+                    <img src="{{ url_for('static',filename='images/psc.png') }}" alt="psc" class="portfolio__img">
+                </a>
+                
+                <!-- Portfolio item 03 -->
+                <!-- <a href="#" class="portfolio__item portfolio__item-uc"> 
+                    <img src="{{ url_for('static',filename='images/tarot-page.png') }}" alt="malaTarot" class="portfolio__img portfolio__img-uc">
+                    <span class="portfolio__img-text">Under Constructions</span>
+                </a> -->
+            </div>
+        </section>
+
+        <!-- Contact  -->
+        <section class="contact-me" id="contact">
+            <h2 class="section__title">Contact Me</h2>
+            {% if isRegister %}
+                <p class="section__subtitle section__subtitle--contact-sent">Thank you for your inquery. Will comeback to you as soon as I recieve the message!</p>
+            {% else %}
+                <p class="section__subtitle section__subtitle--contact">Request for a CV or interested to work together?</p>
+                <form id="Email-Form" class="email-form" action="#" method="POST">
+                    <input name="firstName" type="text" required placeholder="first name">
+                    <input name="emailAddress" type="email" required placeholder="name@company.com">
+                    <textarea name="longTextInput" class="contact-me__long-text" form="Email-Form" placeholder="Type your specific request here ... "></textarea>
+                    
+                    <button class="btn btn-contact" type="submit">Submit</button>
+                </form>
+            {% endif %}
+            <p class="fine-print">Information will not be shared without your permission</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="ahsnl.mi@gmail.com" class="footer__link" id="Email">ahsnl.mi@gmail.com</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://github.com/ahsnl-py">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/ahsanulnas/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <!-- Javascript  -->
+        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
+    </body>
+</html>
