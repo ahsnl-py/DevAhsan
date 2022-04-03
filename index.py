@@ -27,7 +27,9 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 
 class UserQueryContact(db.Model):
-    _id = db.Column("id", db.Integer, primary_key=True)
+    __tablename__ = 'user_query'
+
+    id = db.Column(db.Integer, primary_key=True, )
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     text_message = db.Column(db.Text, nullable=True)
@@ -38,7 +40,7 @@ class UserQueryContact(db.Model):
         self.text_message = text_message
 
     def __repr__(self):
-        return "<UserQueryContact(id='%s')>" % self.id
+        return f"<UserQueryContact(id={self.id})>" 
 
 @app.route("/", methods=["GET","POST"])
 def main():
