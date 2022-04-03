@@ -141,7 +141,7 @@ header {
 
 .logo {
     width: 90%;
-    max-width: 250px;
+    max-width: 175px;
 }
 
 
@@ -254,6 +254,11 @@ header {
 }
 
 @media (min-width: 600px) {
+    .logo {
+        width: 90%;
+        max-width: 200px;
+    }
+
     .intro {
         display: grid;
         width: min-content;
