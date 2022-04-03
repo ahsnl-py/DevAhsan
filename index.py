@@ -1,15 +1,20 @@
 import os
 from flask_mail import Mail, Message
-import smtplib, ssl
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
+load_dotenv()  # take environment variables from .env.
 
 app = Flask(__name__)
 
+email_address = os.getenv('EMAIL_ADDR') 
+email_pass = os.getenv('EMAIL_PASS')
+sec_pass = os.getenv('FLASK_API_KEY') 
 
+app.config['SECRET_KEY'] = sec_pass
 app.config['MAIL_SERVER'] = "smtp-mail.outlook.com"
 app.config['MAIL_PORT '] = 587
-app.config['MAIL_USERNAME'] = "nk_ahsn@hotmail.com"
-app.config['MAIL_PASSWORD'] = "SKATEboard4life"
+app.config['MAIL_USERNAME'] = email_address
+app.config['MAIL_PASSWORD'] = email_pass
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
