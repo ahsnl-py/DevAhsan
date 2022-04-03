@@ -2,10 +2,11 @@ import os
 from flask_mail import Mail, Message
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
-load_dotenv()  # take environment variables from .env.
+
 
 app = Flask(__name__)
 
+load_dotenv()  # take environment variables from .env.
 email_address = os.getenv('EMAIL_ADDR') 
 email_pass = os.getenv('EMAIL_PASS')
 sec_pass = os.getenv('FLASK_API_KEY') 
