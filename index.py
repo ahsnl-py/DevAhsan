@@ -27,8 +27,6 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 
 class UserQueryContact(db.Model):
-    __tablename__ = 'user_query'
-
     id = db.Column(db.Integer, primary_key=True, )
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
